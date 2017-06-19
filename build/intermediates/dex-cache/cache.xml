@@ -3,12 +3,30 @@
 
     <item
         is-multidex="true"
+        jar="/Users/md.tanvirsaad/fab-expansion/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="b2842178403b9b689c80c48aac8626f24cb7144f">
+        <dex dex="/Users/md.tanvirsaad/fab-expansion/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run-bootstrap_b381f0577a3c7f75c27f4623cdad320b688d96b0/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
         jar="/Users/md.tanvirsaad/Downloads/FAB_Expansion/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
         jumboMode="true"
         optimize="true"
         revision="25.0.2"
         sha1="d8f1949228e38c447280719743ed911f241e88ec">
         <dex dex="/Users/md.tanvirsaad/Downloads/FAB_Expansion/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run-bootstrap_2d624a5148dca10a35910b212bc88c437fb6cdb3/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/md.tanvirsaad/fab-expansion/app/build/intermediates/incremental-runtime-classes/debug/instant-run.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="510aa6efc159983dfbffa676a0dae37568c0a46f">
+        <dex dex="/Users/md.tanvirsaad/fab-expansion/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run_bafecab0c19c1e6d41e1c3a883960956f56e0446/classes.dex" />
     </item>
     <item
         is-multidex="true"
