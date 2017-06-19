@@ -3,17 +3,21 @@ package com.androidhive.fab_expansion;
 import android.animation.Animator;
 import android.content.Context;
 import android.content.res.ColorStateList;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 import android.widget.Toast;
+import com.androidhive.fab_expansion.Utils.*;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -39,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
         motherLayout = (LinearLayout) findViewById(R.id.fabLayout1);
 
 
-        FloatingActionButton fab = new FloatingActionButton(this);
+         fab = new FloatingActionButton(this);
         fab.setId(View.generateViewId());
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -47,9 +51,9 @@ public class MainActivity extends AppCompatActivity {
                 Log.d("DEBUG", "onFabFoo");
             }
         });
-        fab.setImageResource(R.drawable.add);
+        fab.setImageResource(R.drawable.call);
         fab.setElevation(2);
-        fab.setSize(FloatingActionButton.SIZE_NORMAL);
+        fab.setSize(FloatingActionButton.SIZE_MINI);
         fab.setFocusable(true);
         RelativeLayout.LayoutParams lay = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,
                 ViewGroup.LayoutParams.WRAP_CONTENT);
@@ -57,9 +61,15 @@ public class MainActivity extends AppCompatActivity {
        // lay.addRule(RelativeLayout.ALIGN_PARENT_LEFT);
         lay.setMargins(2,2,2,2);
         fab.setLayoutParams(lay);
+        motherLayout.addView(fab);
+
+        fab.setVisibility(View.INVISIBLE);
 
 
-        FloatingActionButton fab2 = new FloatingActionButton(this);
+
+
+
+         fab2 = new FloatingActionButton(this);
         fab2.setId(View.generateViewId());
         fab2.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -82,18 +92,39 @@ public class MainActivity extends AppCompatActivity {
         lay2.setMargins(2,6,2,2);
         fab2.setLayoutParams(lay2);
 
+        motherLayout.addView(fab2);
 
-        FloatingActionButton fab3 = new FloatingActionButton(this);
+        TextView valueTV = new TextView(this);
+        valueTV.setText("hallo hallo");
+        valueTV.setId(5);
+        valueTV.setLayoutParams(new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT));
+        valueTV.setTextSize(16);
+        valueTV.setPadding(5, 3, 0, 3);
+        // valueTV.setTypeface(null, Typeface.ITALIC);
+        valueTV.setGravity(Gravity.LEFT | Gravity.CENTER);
+
+        motherLayout.addView(valueTV);
+
+
+
+        fab2.setVisibility(View.INVISIBLE);
+
+
+         fab3 = new FloatingActionButton(this);
         fab3.setId(View.generateViewId());
-        fab2.setOnClickListener(new View.OnClickListener() {
+        fab3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.d("DEBUG", "onFabFoo");
+                if (!isFABOpen) {
+                    showFABMenu();
+                } else {
+                    closeFABMenu();
+                }
             }
         });
-        fab3.setImageResource(R.drawable.call);
+        fab3.setImageResource(R.drawable.add);
         fab3.setElevation(2);
-        fab3.setSize(android.support.design.widget.FloatingActionButton.SIZE_MINI);
+        fab3.setSize(FloatingActionButton.SIZE_NORMAL);
         fab3.setFocusable(true);
         RelativeLayout.LayoutParams lay3 = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,
                 ViewGroup.LayoutParams.WRAP_CONTENT);
@@ -104,9 +135,14 @@ public class MainActivity extends AppCompatActivity {
         fab3.setLayoutParams(lay3);
 
 
-       // motherLayout.addView(fab);
-       // motherLayout.addView(fab2);
-       // motherLayout.addView(fab3);
+
+
+        motherLayout.addView(fab3);
+
+
+
+
+
 
 
 
@@ -118,7 +154,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    private void findViewById() {
+   /* private void findViewById() {
         motherLayout = (LinearLayout) findViewById(R.id.fabLayout1);
         fabLayout2 = (LinearLayout) findViewById(R.id.fabLayout2);
         fabLayout3 = (LinearLayout) findViewById(R.id.fabLayout3);
@@ -130,7 +166,7 @@ public class MainActivity extends AppCompatActivity {
         fab4 = (FloatingActionButton) findViewById(R.id.fab4);
         fabBGLayout = findViewById(R.id.fabBGLayout);
 
-    }
+    }*/
 
     private void onClickListerner() {
 
@@ -194,27 +230,37 @@ public class MainActivity extends AppCompatActivity {
 
     private void showFABMenu() {
         isFABOpen = true;
-        motherLayout.setVisibility(View.VISIBLE);
-        fabLayout2.setVisibility(View.VISIBLE);
-        fabLayout3.setVisibility(View.VISIBLE);
-        fabLayout4.setVisibility(View.VISIBLE);
-        fabBGLayout.setVisibility(View.VISIBLE);
 
-        fab.animate().rotationBy(180);
-        motherLayout.animate().translationY(-getResources().getDimension(R.dimen.standard_55));
-        fabLayout2.animate().translationY(-getResources().getDimension(R.dimen.standard_100));
-        fabLayout3.animate().translationY(-getResources().getDimension(R.dimen.standard_145));
-        fabLayout4.animate().translationY(-getResources().getDimension(R.dimen.standard_190));
+        AnimationMoveUpwardBehavior(this,fab);
+       // motherLayout.setVisibility(View.VISIBLE);
+       // fabLayout2.setVisibility(View.VISIBLE);
+       // fabLayout3.setVisibility(View.VISIBLE);
+       // fabLayout4.setVisibility(View.VISIBLE);
+      //  fabBGLayout.setVisibility(View.VISIBLE);
+
+        fab3.animate().rotationBy(180);
+        fab.setVisibility(View.VISIBLE);
+        fab2.setVisibility(View.VISIBLE);
+
+
+
+       // fab2.animate().translationY(-getResources().getDimension(R.dimen.standard_55));
+       // fab.animate().translationY(-getResources().getDimension(R.dimen.standard_100));
+      //  fabLayout3.animate().translationY(-getResources().getDimension(R.dimen.standard_145));
+       // fabLayout4.animate().translationY(-getResources().getDimension(R.dimen.standard_190));
     }
 
     private void closeFABMenu() {
         isFABOpen = false;
-        fabBGLayout.setVisibility(View.GONE);
-        fab.animate().rotationBy(-180);
-        motherLayout.animate().translationY(0);
-        fabLayout2.animate().translationY(0);
-        fabLayout3.animate().translationY(0);
-        fabLayout4.animate().translationY(0).setListener(new Animator.AnimatorListener() {
+       // fabBGLayout.setVisibility(View.GONE);
+        fab3.animate().rotationBy(-180);
+
+        fab.setVisibility(View.GONE);
+        fab2.setVisibility(View.GONE);
+        //motherLayout.animate().translationY(0);
+       // fabLayout2.animate().translationY(0);
+       // fabLayout3.animate().translationY(0);
+    /*    fabLayout4.animate().translationY(0).setListener(new Animator.AnimatorListener() {
             @Override
             public void onAnimationStart(Animator animator) {
 
@@ -240,7 +286,7 @@ public class MainActivity extends AppCompatActivity {
             public void onAnimationRepeat(Animator animator) {
 
             }
-        });
+        });*/
 
 
     }
