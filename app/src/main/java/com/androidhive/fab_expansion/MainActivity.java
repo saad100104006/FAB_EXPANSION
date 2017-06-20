@@ -1,30 +1,33 @@
 package com.androidhive.fab_expansion;
 
-import android.animation.Animator;
-import android.content.Context;
 import android.content.res.ColorStateList;
-import android.graphics.Typeface;
+import android.content.res.TypedArray;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
-import android.view.Gravity;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
-import android.widget.TextView;
 import android.widget.Toast;
-import com.androidhive.fab_expansion.Utils.*;
 
 public class MainActivity extends AppCompatActivity {
 
-    FloatingActionButton fab, fab1, fab2, fab3, fab4;
+    FloatingActionButton fab3, fab1, fab4, fabRoot, fab2;
     LinearLayout motherLayout, fabLayout2, fabLayout3, fabLayout4;
     View fabBGLayout;
     boolean isFABOpen = false;
+    TypedArray imgs;
+    int[] colors = new int[]{
+            Color.BLACK,
+            Color.RED,
+            Color.GREEN,
+            Color.BLUE,
+            Color.YELLOW
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,43 +36,44 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-      //  findViewById();
+        //findViewById();
+        // onClickListerner();
+        // getFab(this,motherLayout);
+        // getFab(this,fabLayout2);
 
-       // onClickListerner();
-
-
-       // getFab(this,motherLayout);
-       // getFab(this,fabLayout2);
         motherLayout = (LinearLayout) findViewById(R.id.fabLayout1);
+        imgs = getResources().obtainTypedArray(R.array.fab_imgs);
 
 
-         fab = new FloatingActionButton(this);
-        fab.setId(View.generateViewId());
-        fab.setOnClickListener(new View.OnClickListener() {
+
+//setting child fabs programetically
+
+//ONE
+        fab1 = new FloatingActionButton(this);
+        fab1.setId(View.generateViewId());
+        fab1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Log.d("DEBUG", "onFabFoo");
             }
         });
-        fab.setImageResource(R.drawable.call);
-        fab.setElevation(2);
-        fab.setSize(FloatingActionButton.SIZE_MINI);
-        fab.setFocusable(true);
-        RelativeLayout.LayoutParams lay = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,
+        fab1.setImageResource(imgs.getResourceId(4, -1));
+        fab1.setBackgroundTintList(ColorStateList.valueOf(colors[3]));
+        fab1.setElevation(6);
+        fab1.setSize(FloatingActionButton.SIZE_MINI);
+        fab1.setFocusable(true);
+        RelativeLayout.LayoutParams lay5 = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,
                 ViewGroup.LayoutParams.WRAP_CONTENT);
-        lay.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM);
-       // lay.addRule(RelativeLayout.ALIGN_PARENT_LEFT);
-        lay.setMargins(2,2,2,2);
-        fab.setLayoutParams(lay);
-        motherLayout.addView(fab);
-
-        fab.setVisibility(View.INVISIBLE);
-
+        lay5.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM);
+        // lay.addRule(RelativeLayout.ALIGN_PARENT_LEFT);
+        lay5.setMargins(2, 2, 2, 2);
+        fab1.setLayoutParams(lay5);
+        motherLayout.addView(fab1);
+        fab1.hide();
 
 
-
-
-         fab2 = new FloatingActionButton(this);
+        //TWO
+        fab2 = new FloatingActionButton(this);
         fab2.setId(View.generateViewId());
         fab2.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -77,42 +81,105 @@ public class MainActivity extends AppCompatActivity {
                 Log.d("DEBUG", "onFabFoo");
             }
         });
-        fab2.setImageResource(R.drawable.message);
-        fab2.setElevation(2);
+        fab2.setImageResource(imgs.getResourceId(3, -1));
+        fab2.setBackgroundTintList(ColorStateList.valueOf(colors[4]));
+        fab2.setElevation(6);
         fab2.setSize(FloatingActionButton.SIZE_MINI);
         fab2.setFocusable(true);
-        fab2.setBackgroundColor(getResources().getColor(R.color.colorFAB1));
+        RelativeLayout.LayoutParams lay4 = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,
+                ViewGroup.LayoutParams.WRAP_CONTENT);
+        lay4.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM);
+        // lay.addRule(RelativeLayout.ALIGN_PARENT_LEFT);
+        lay4.setMargins(2, 2, 2, 2);
+        fab2.setLayoutParams(lay4);
+        motherLayout.addView(fab2);
+        fab2.hide();
 
-        fab2.setBackgroundTintList(ColorStateList.valueOf(0xFF4CAF50));
-       // fab2.setBackgroundTintList(getResources().getColor(R.color.colorFAB1));
+//THREE
+
+        fab3 = new FloatingActionButton(this);
+        fab3.setId(View.generateViewId());
+        fab3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.d("DEBUG", "onFabFoo");
+            }
+        });
+        fab3.setImageResource(imgs.getResourceId(2, -1));
+        fab3.setBackgroundTintList(ColorStateList.valueOf(colors[2]));
+        fab3.setElevation(6);
+        fab3.setSize(FloatingActionButton.SIZE_MINI);
+        fab3.setFocusable(true);
+        RelativeLayout.LayoutParams lay = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,
+                ViewGroup.LayoutParams.WRAP_CONTENT);
+        lay.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM);
+        // lay.addRule(RelativeLayout.ALIGN_PARENT_LEFT);
+        lay.setMargins(2, 2, 2, 2);
+        fab3.setLayoutParams(lay);
+        motherLayout.addView(fab3);
+        fab3.hide();
+
+
+
+
+
+//FOUR
+
+
+        fab4 = new FloatingActionButton(this);
+        fab4.setId(View.generateViewId());
+        fab4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.d("DEBUG", "onFabFoo");
+            }
+        });
+        fab4.setImageResource(imgs.getResourceId(1, -1));
+        fab4.setElevation(6);
+        fab4.setSize(FloatingActionButton.SIZE_MINI);
+        fab4.setFocusable(true);
+        fab4.setBackgroundColor(getResources().getColor(R.color.colorFAB1));
+
+        fab4.setBackgroundTintList(ColorStateList.valueOf(colors[1]));
+        // fab4.setBackgroundTintList(getResources().getColor(R.color.colorFAB1));
         RelativeLayout.LayoutParams lay2 = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,
                 ViewGroup.LayoutParams.WRAP_CONTENT);
         lay2.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM);
-      //  lay2.addRule(RelativeLayout.ALIGN_PARENT_LEFT);
-        lay2.setMargins(2,6,2,2);
-        fab2.setLayoutParams(lay2);
+        //  lay2.addRule(RelativeLayout.ALIGN_PARENT_LEFT);
+        lay2.setMargins(2, 6, 2, 2);
+        fab4.setLayoutParams(lay2);
 
-        motherLayout.addView(fab2);
+        motherLayout.addView(fab4);
+        fab4.hide();
 
-        TextView valueTV = new TextView(this);
-        valueTV.setText("hallo hallo");
-        valueTV.setId(5);
-        valueTV.setLayoutParams(new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT));
+
+
+
+      /*  TextView valueTV = new TextView(this);
+        valueTV.setId(View.generateViewId());
+        RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(
+                RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
+        params.addRule(RelativeLayout.RIGHT_OF, fab4.getId());
+        valueTV.setLayoutParams(params);
         valueTV.setTextSize(16);
-        valueTV.setPadding(5, 3, 0, 3);
+        valueTV.setPadding(0, 0, 0, 0);
         // valueTV.setTypeface(null, Typeface.ITALIC);
-        valueTV.setGravity(Gravity.LEFT | Gravity.CENTER);
-
-        motherLayout.addView(valueTV);
-
-
-
-        fab2.setVisibility(View.INVISIBLE);
+        valueTV.setGravity(Gravity.RIGHT );
+        valueTV.setText("hallo hallo");
+        motherLayout.addView(valueTV);*/
 
 
-         fab3 = new FloatingActionButton(this);
-        fab3.setId(View.generateViewId());
-        fab3.setOnClickListener(new View.OnClickListener() {
+
+
+
+
+
+//setting main fab3 programetically
+
+
+        fabRoot = new FloatingActionButton(this);
+        fabRoot.setId(View.generateViewId());
+        fabRoot.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (!isFABOpen) {
@@ -122,53 +189,44 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
-        fab3.setImageResource(R.drawable.add);
-        fab3.setElevation(2);
-        fab3.setSize(FloatingActionButton.SIZE_NORMAL);
-        fab3.setFocusable(true);
+        fabRoot.setImageResource(imgs.getResourceId(0, -1));
+        fabRoot.setBackgroundTintList(ColorStateList.valueOf(colors[3]));
+        fabRoot.setElevation(6);
+        fabRoot.setSize(FloatingActionButton.SIZE_NORMAL);
+        fabRoot.setFocusable(true);
         RelativeLayout.LayoutParams lay3 = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,
                 ViewGroup.LayoutParams.WRAP_CONTENT);
         lay3.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM);
-       // lay3.addRule(RelativeLayout.ALIGN_PARENT_LEFT);
-        lay3.setMargins(2,10,2,2);
-      //  lay3.setMargins();
-        fab3.setLayoutParams(lay3);
-
-
-
-
-        motherLayout.addView(fab3);
-
-
-
-
-
-
+        // lay3.addRule(RelativeLayout.ALIGN_PARENT_LEFT);
+        lay3.setMargins(2, 10, 2, 2);
+        //  lay3.setMargins();
+        fabRoot.setLayoutParams(lay3);
+        motherLayout.addView(fabRoot);
 
 
     }
 
-    public LinearLayout getFab(Context context, ViewGroup parent) {
+  /*  public LinearLayout getFab(Context context, ViewGroup parent) {
         LayoutInflater inflater = LayoutInflater.from(context);
         return (LinearLayout) inflater.inflate(R.layout.floating_action_button, parent, false);
     }
 
-
+*/
    /* private void findViewById() {
         motherLayout = (LinearLayout) findViewById(R.id.fabLayout1);
         fabLayout2 = (LinearLayout) findViewById(R.id.fabLayout2);
         fabLayout3 = (LinearLayout) findViewById(R.id.fabLayout3);
         fabLayout4 = (LinearLayout) findViewById(R.id.fabLayout4);
-        fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab1 = (FloatingActionButton) findViewById(R.id.fab1);
-        fab2 = (FloatingActionButton) findViewById(R.id.fab2);
         fab3 = (FloatingActionButton) findViewById(R.id.fab3);
+        fab1 = (FloatingActionButton) findViewById(R.id.fab1);
         fab4 = (FloatingActionButton) findViewById(R.id.fab4);
+        fabRoot = (FloatingActionButton) findViewById(R.id.fabRoot);
+        fab2 = (FloatingActionButton) findViewById(R.id.fab2);
         fabBGLayout = findViewById(R.id.fabBGLayout);
 
     }*/
 
-    private void onClickListerner() {
+ /*   private void onClickListerner() {
 
 
         fab1.setOnClickListener(new View.OnClickListener() {
@@ -180,7 +238,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        fab2.setOnClickListener(new View.OnClickListener() {
+        fab4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
@@ -189,7 +247,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        fab3.setOnClickListener(new View.OnClickListener() {
+        fabRoot.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
@@ -198,7 +256,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        fab4.setOnClickListener(new View.OnClickListener() {
+        fab2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
@@ -207,7 +265,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        fab.setOnClickListener(new View.OnClickListener() {
+        fab3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if (!isFABOpen) {
@@ -226,40 +284,43 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-    }
+    }*/
 
     private void showFABMenu() {
         isFABOpen = true;
 
-        AnimationMoveUpwardBehavior(this,fab);
-       // motherLayout.setVisibility(View.VISIBLE);
-       // fabLayout2.setVisibility(View.VISIBLE);
-       // fabLayout3.setVisibility(View.VISIBLE);
-       // fabLayout4.setVisibility(View.VISIBLE);
-      //  fabBGLayout.setVisibility(View.VISIBLE);
 
-        fab3.animate().rotationBy(180);
-        fab.setVisibility(View.VISIBLE);
-        fab2.setVisibility(View.VISIBLE);
+        // motherLayout.setVisibility(View.VISIBLE);
+        // fabLayout2.setVisibility(View.VISIBLE);
+        // fabLayout3.setVisibility(View.VISIBLE);
+        // fabLayout4.setVisibility(View.VISIBLE);
+        //  fabBGLayout.setVisibility(View.VISIBLE);
+
+        fabRoot.animate().rotationBy(180);
+        fab3.show();
+        fab4.show();
+        fab2.show();
+        fab1.show();
 
 
-
-       // fab2.animate().translationY(-getResources().getDimension(R.dimen.standard_55));
-       // fab.animate().translationY(-getResources().getDimension(R.dimen.standard_100));
-      //  fabLayout3.animate().translationY(-getResources().getDimension(R.dimen.standard_145));
-       // fabLayout4.animate().translationY(-getResources().getDimension(R.dimen.standard_190));
+        // fab4.animate().translationY(-getResources().getDimension(R.dimen.standard_55));
+        // fab3.animate().translationY(-getResources().getDimension(R.dimen.standard_100));
+        //  fabLayout3.animate().translationY(-getResources().getDimension(R.dimen.standard_145));
+        // fabLayout4.animate().translationY(-getResources().getDimension(R.dimen.standard_190));
     }
 
     private void closeFABMenu() {
         isFABOpen = false;
-       // fabBGLayout.setVisibility(View.GONE);
-        fab3.animate().rotationBy(-180);
+        // fabBGLayout.setVisibility(View.GONE);
+        fabRoot.animate().rotationBy(-180);
 
-        fab.setVisibility(View.GONE);
-        fab2.setVisibility(View.GONE);
+        fab3.hide();
+        fab4.hide();
+        fab2.hide();
+        fab1.hide();
         //motherLayout.animate().translationY(0);
-       // fabLayout2.animate().translationY(0);
-       // fabLayout3.animate().translationY(0);
+        // fabLayout2.animate().translationY(0);
+        // fabLayout3.animate().translationY(0);
     /*    fabLayout4.animate().translationY(0).setListener(new Animator.AnimatorListener() {
             @Override
             public void onAnimationStart(Animator animator) {

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <integer-array name="fab_imgs">
+        <item>@drawable/add</item>
+        <item>@drawable/message</item>
+        <item>@drawable/done</item>
+        <item>@drawable/call</item>
+        <item>@drawable/facebook</item>
+    </integer-array>
+
+    <integer-array name="color_imgs">
+        <item>@color/colorFAB1</item>
+        <item>@color/colorFAB2</item>
+        <item>@color/colorFAB3</item>
+        <item>@color/colorFAB4</item>
+    </integer-array>
+
+
+
+
+</resources>

@@ -16,15 +16,21 @@
     app:layout_behavior="com.androidhive.fab_expansion.Utils.AnimationMoveUpwardBehavior"
     >
 
+
+<!--
     <TextView
+        android:id="@+id/text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+
         android:background="@color/textBackground"
         android:elevation="6dp"
-        android:layout_gravity="left|bottom"
+        android:layout_gravity="right|bottom"
         android:padding="4dp"
-        android:text="facebook" />
-    <android.support.design.widget.FloatingActionButton
+        android:text="facebook" />-->
+
+
+  <!--  <android.support.design.widget.FloatingActionButton
         android:id="@+id/fab4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -33,7 +39,9 @@
         app:backgroundTint="@color/colorFAB4"
         app:elevation="6dp"
         app:fabSize="mini"
-        app:srcCompat="@drawable/facebook" />
+        app:srcCompat="@drawable/facebook" />-->
+
+
 
 
     <!--
